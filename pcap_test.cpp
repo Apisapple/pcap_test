@@ -65,8 +65,14 @@ void pcap_test::showData(){
     // TCP length > 20
     if(tcp_len >5 ){
         printf("TCP data : ");
-        for (int i = 0; i < tcp_len; i++) {
-            printf("%02X " , packet[54 + i]);
+        if(tcp_len>10){
+            for (int i = 0; i < tcp_len; i++) {
+                printf("%02X " , packet[54 + i]);
+            }
+        }else{
+            for (int i = 0; i < tcp_len; i++) {
+                printf("%02X " , packet[54 + i]);
+            }
         }
         printf("\n");
     }
