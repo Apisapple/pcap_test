@@ -14,8 +14,13 @@ private:
 
     const u_char *packet;
     int res;
+    //IP offset
     int offset;
+    //TCP offset
+    int t_offset;
     int tcp_len;
+    int D_port;
+    int S_port;
 public:
     pcap_test();
     ~pcap_test();

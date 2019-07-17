@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
         usage();
         return -1;
     }
-/*-----------------------------------*/
+    /*-----------------------------------*/
     pcap_test* tester = new pcap_test();
     tester->catch_Handle(dev,errbuf);
 
@@ -33,10 +33,11 @@ int main(int argc, char *argv[])
         // IPv4 확인
         if (0x0800 == tester->get_ip())
         {
-//          Show packet Size
-            tester->get_size();
+            printf("=============================\n");
+            //          Show packet Size
+            printf("%u bytes captured\n",  tester->get_size());
 
-//          Show mac Address
+            //          Show mac Address
             printf("S_mac/");
             tester->showMac(0);
             printf("D_mac/");
@@ -45,26 +46,23 @@ int main(int argc, char *argv[])
             // TCP 확인
             if (0x06 == tester->get_tcp())
             {
-//              Show IP
+                //              Show IP
                 printf("S_ip :");
                 tester->showIp(26);
                 printf("D_ip :");
                 tester->showIp(30);
 
-//              Show Port number
+                //              Show Port number
                 printf("S_port :");
                 tester->showPort(14);
                 printf("D_port :");
                 tester->showPort(16);
-               
-//              int tcp_len = index * 4 + 20;
-//              for(int j = 0 ; j < 10; j++) printf("http info : %02X :", packet[tcp_len + j]);
-//              printf("\n");
-                printf("http info :");
+
                 tester->showData();
                 printf("\n");
             }
         }
+        printf("=============================\n");
     }
     return 0;
 }
